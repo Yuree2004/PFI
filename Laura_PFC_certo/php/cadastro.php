@@ -1,30 +1,21 @@
-<?php 
+<?php
+    include("conexao.php");
 
-    require_once  'classe.php' ;
-    $ u = new usuario();
+    $email=$_POST['email'];
+    $nome=$_POST['nome'];
+    $sobrenome=$_POST['sobrenome'];
+    $senha=$_POST['senha'];
 
-    if (isset( $ _POST [ 'login' ])){
-        $ login = addlashes( $ _POST [ 'login' ]);
-        $ senha = addlashes( $ _POST [ 'senha' ]);
+    $sql="INSERT INTO usuarios(email, nome, sobrenome, senha)
+            VALUES ('$email', '$nome', '$sobrenome', '$senha')";
 
-        if (!vazio( $ login ) && !vazio( $ senha )){
-            $ u ->( 'logindatabase' , ' localhost' , 'root' , '123mudar' );
-            echo " $ mensagem ";
-            if ( $ u -> msg == ""){
-                if ( $ u -> cadastrar ( $ login , $ senha )){
-                    echo " <script language='javascript' type='text/javascript'>alert('O usuário foi cadastrado com sucesso!')</script> ";
-                    echo " <script language='javascript' type='text/javascript'>window.location.href='login.html'</script> ";
-                } senão {
-                    echo " <script language='javascript' type='text/javascript'>alert('O usuário já está cadastrado no sistema. Tente outro!')</script> ";
-                    echo " <script language='javascript' type='text/javascript'>window.location.href='cadastro.html';</script> ";
-                }
-            } senão {
-                echo " Erro: ". $ u -> msg ;
-            }
-        } senão {
-            echo " <script language='javascript' type='text/javascript'>alert('Prenha todos os campos!')</script> ";
-            echo " <script language='javascript' type='text/javascript'>window.location.href='cadastro.html';</script> ";
-        }
+    if(mysqli_query($conexao, $sql)){
+        echo "Usuário cadastrado com sucesso";
+        header("Location: ../html/telaLogada.html");
+
     }
-
+    else{
+        echo "Erro".mysqli_connect_error($conexao);
+    }        
+    mysqli_close($conexao);
 ?>

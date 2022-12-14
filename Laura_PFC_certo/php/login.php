@@ -1,28 +1,33 @@
-<?php
-				/* Declaração de Variáveis */
-				$user = @$_REQUEST['email'];
-				$pass = @$_REQUEST['senha'];
-				$submit = @$_REQUEST['submit'];
-				
-				/* Declaração das variáveis que possuem os usuarios e as senhas */
-				$user1 = 'toolmmer';
-				$pass1 = 'a1b24d';
-				
-				$user2 = 'gabrielsooco';
-				$pass2 = 'b3gabriel';   
-				
-				/* Testa se o botão submit foi ativado */
-				if($submit){
-					
-					/* Se o campo usuário ou senha estiverem vazios geramos um alerta */
-					if($user == "" || $pass == ""){
-						echo "<script:alert('Por favor, preencha todos os campos!');</script>";
-					}
-					/* Caso o campo usuario e senha não 
-						*estejam vazios vamos testar se o usuário e a senha batem 
-					*iniciamos uma sessão e redirecionamos o usuário para o painel */
-					else{
-						if(($user == $user1 ))
-						
-					}}
-                        ?>
+<php
+ob_start();
+?>
+
+<html>
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        <?php
+        include("conexao.php");
+
+        //verificar formulario para autenticação
+        $email=$_POST["email"];
+        $senha=$_POST["senha"];
+        
+        $sql="SELECT * FROM usuarios WHERE email='$email' AND senha='$senha'";
+        $resultado=mysqli_query($conexao, $sql);
+        $linhas=mysqli_affected_rows($conexao);
+
+        if($linhas>0){
+            session_start();
+            $_SESSION["usuario"]=$email;
+            while($exibirNome=mysqli_fetch_array($resultado));
+           header("Location: ../html/telaLogada.html");
+
+        }
+        else{
+            echo "Dados incorretos! <br>";
+        }
+    ?>
+    </body>
+</html>
