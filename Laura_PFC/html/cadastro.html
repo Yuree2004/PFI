@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styleCadastro.css">
+    <title>Cadastro</title>
+</head>
+
+<body> 
+    <link rel="stylesheet" href="">
+    <div class="container">
+        <div class="form-image">
+            <img class="img" src="https://nova-escola-producao.s3.amazonaws.com/dsVxp433GQZKtmDMYKErDJXcxv9zvzDJudS2R3CYpp7B3K4D77h5FgtQNh2y/ne324-emfoco-pg1.png">
+        </div>
+        <div class="form">
+            <form action="../php/cadastro.php" method="POST">
+                <div class="form-header">
+                    <div class="title">
+                        <h1>Cadastre-se</h1>
+                    </div>
+             
+                </div>
+
+                <div class="input-group">
+                    <div class="input-box">
+                        <label for="nome">Primeiro Nome</label>
+                        <input id="nome" type="text" name="nome" placeholder="Digite seu primeiro nome" required>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="sobrenome">Sobrenome</label>
+                        <input id="sobrenome" type="text" name="sobrenome" placeholder="Digite seu sobrenome" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="email">E-mail</label>
+                        <input id="email" type="email" name="email" placeholder="Digite seu e-mail" required>
+                    </div>
+
+
+                    <div class="input-box">
+                        <label for="senha">Senha</label>
+                        <input id="senha" type="password" name="senha" placeholder="Digite sua senha" required>
+                    </div>
+
+
+                    <div class="input-box">
+                        <label for="confSenha">Confirme sua Senha</label>
+                        <input id="confSenha" type="password" name="confSenha" placeholder="Digite sua senha novamente" required>
+                    </div>
+
+                </div>
+
+
+                <div class="continue-button">
+                    <button><a class="continuar" href="../php/cadastro.php">Continuar</a> </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <p class="error-validation template"></p>
+  <script src="C:\Users\laura\Desktop\Laura_PFC\javaScript\cadastroJS.js"></script>
+</body>
+
+</html>
